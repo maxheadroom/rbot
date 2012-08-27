@@ -45,8 +45,8 @@ class Jira5Plugin < Plugin
     
   end
 
-  def host_path
-    @bot.config["jira5.url"]
+  def get_auth_header()
+      
   end
 
   def initialize
@@ -61,5 +61,5 @@ class Jira5Plugin < Plugin
     m.reply Utils.safe_exec(host_path, m.params)
   end
 end
-plugin = HostPlugin.new
-plugin.register("host")
+plugin = Jira5Plugin.new
+plugin.register("jira5")
