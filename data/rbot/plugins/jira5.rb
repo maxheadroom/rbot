@@ -46,12 +46,10 @@ class Jira5Plugin < Plugin
   end
 
   def get_auth_header()
-    =begin 
-    Find documentation about JIRA 5 authentication here:
-    https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Basic+Authentication
-    
-    Basically we need to encode "username:password" as base64 string to generate the Auth Header
-    =end
+    # Find documentation about JIRA 5 authentication here:
+    # https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Basic+Authentication
+    # 
+    # Basically we need to encode "username:password" as base64 string to generate the Auth Header
       
     Base64.encode64(@bot.config["jira5.username"] + ':' + @bot.config["jira5.password"])
       
