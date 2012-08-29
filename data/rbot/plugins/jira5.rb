@@ -59,12 +59,19 @@ class Jira5Plugin < Plugin
     super
   end
 
-  def privmsg(m)
-    unless(m.params =~ /^(\w|-|\.)+$/)
-      m.reply "incorrect usage: " + help(m.plugin)
-      return
+
+  
+  # initialize the plugin
+  def jira5(m, params)
+    uname = @bot.config['jira5.username']
+    upass = @bot.config['jira5.password']
+    repl = String.new
+    if uname.empty or upass.empty
+      repl << 'error: JIRA username or password not set'
+    else
+      repl << get_auth_header()
     end
-    m.reply Utils.safe_exec(host_path, m.params)
+    m.reply repl
   end
 end
 plugin = Jira5Plugin.new
