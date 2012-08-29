@@ -51,7 +51,7 @@ class Jira5Plugin < Plugin
     # 
     # Basically we need to encode "username:password" as base64 string to generate the Auth Header
       
-    Base64.encode64(@bot.config["jira5.username"] + ':' + @bot.config["jira5.password"])
+    return Base64.encode64(@bot.config["jira5.username"] + ':' + @bot.config["jira5.password"])
       
   end
 
